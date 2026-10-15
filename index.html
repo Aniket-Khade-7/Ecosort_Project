@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="EcoSort is a friendly waste-sorting learning game for young learners."
+    />
+    <title>EcoSort — Sort It Right!</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script type="module" src="js/main.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#welcome" aria-label="EcoSort home"
+        ><span class="brand__mark"
+          ><img src="assets/icons/recycle.svg" alt="" /></span
+        ><span>EcoSort</span></a
+      >
+      <nav class="steps" aria-label="Course progress">
+        <span class="steps__item is-active" data-step="welcome">Welcome</span
+        ><span class="steps__line"></span>
+        <span class="steps__item" data-step="learn">Learn</span
+        ><span class="steps__line"></span>
+        <span class="steps__item" data-step="game">Sort game</span
+        ><span class="steps__line"></span>
+        <span class="steps__item" data-step="quiz">Quiz</span
+        ><span class="steps__line"></span>
+        <span class="steps__item" data-step="results">Results</span>
+      </nav>
+      <span class="header__badge"
+        >Score <strong id="header-score">0</strong></span
+      >
+    </header>
+    <main class="app-shell">
+      <div id="app-error" class="error-box" role="alert" hidden></div>
+      <section
+        class="screen is-visible"
+        id="screen-welcome"
+        data-screen="welcome"
+        aria-labelledby="welcome-title"
+      >
+        <div class="welcome-layout">
+          <figure class="welcome-art" aria-hidden="true">
+            <img
+              class="welcome-illustration"
+              src="assets/images/welcome-recycling.svg"
+              alt=""
+            />
+          </figure>
+          <div class="welcome-copy">
+            <p class="eyebrow" id="course-title">MINI COURSE · 10 MINUTES</p>
+            <h1 id="welcome-title">EcoSort: Sort It Right!</h1>
+            <p class="lead" id="course-intro">
+              Learn which bin your waste belongs in, play a quick sorting game,
+              then test yourself with a 5-question quiz.
+            </p>
+            <form id="welcome-form" class="welcome-form">
+              <label for="learner-name">Your name</label
+              ><input
+                id="learner-name"
+                name="learnerName"
+                type="text"
+                minlength="2"
+                maxlength="40"
+                placeholder="e.g. Aarav"
+                autocomplete="given-name"
+                required
+              />
+              <p class="field-hint">Type at least 2 characters to start.</p>
+              <button
+                class="button button--primary"
+                id="start-button"
+                type="submit"
+                disabled
+              >
+                Start course
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+      <section
+        class="screen"
+        id="screen-learn"
+        data-screen="learn"
+        aria-labelledby="learn-title"
+        hidden
+      >
+        <div class="screen-heading">
+          <h1 id="learn-title">Meet the three bins</h1>
+          <p>Click a card to flip and see examples.</p>
+        </div>
+        <div
+          id="learn-cards"
+          class="bin-cards"
+          aria-label="Waste bin learning cards"
+        ></div>
+        <div class="screen-footer">
+          <p id="cards-viewed" class="muted">0 of 3 cards viewed</p>
+          <button class="button button--primary" id="learn-next" disabled>
+            Let's sort <span aria-hidden="true">→</span>
+          </button>
+        </div>
+      </section>
+      <section
+        class="screen"
+        id="screen-game"
+        data-screen="game"
+        aria-labelledby="game-title"
+        hidden
+      >
+        <div class="screen-heading screen-heading--row">
+          <div>
+            <h1 id="game-title">Sort the waste</h1>
+            <p>
+              Drag each item into the right bin. Keyboard: Tab to an item,
+              Enter, then press 1, 2 or 3.
+            </p>
+          </div>
+          <div class="score-pill">
+            <span>Score</span><output id="game-score">0</output
+            ><small>/ <span id="game-max">80</span> pts</small>
+          </div>
+        </div>
+        <div class="tray-panel">
+          <div class="tray-heading">
+            <h2>Waste tray</h2>
+            <span id="sort-count">0 of 8 sorted</span>
+          </div>
+          <progress
+            id="sort-progress"
+            value="0"
+            max="8"
+            aria-label="Waste items sorted"
+          ></progress>
+          <div
+            id="item-tray"
+            class="item-tray"
+            aria-label="Waste items to sort"
+          ></div>
+        </div>
+        <div id="game-bins" class="game-bins" aria-label="Sorting bins"></div>
+        <div class="game-feedback" id="game-feedback" aria-live="polite"></div>
+        <div class="screen-footer">
+          <span class="muted" id="game-instruction"></span
+          ><button class="button button--primary" id="game-continue" hidden>
+            Continue to quiz
+          </button>
+        </div>
+      </section>
+      <section
+        class="screen"
+        id="screen-quiz"
+        data-screen="quiz"
+        aria-labelledby="quiz-title"
+        hidden
+      >
+        <div class="screen-heading screen-heading--row">
+          <div><h1 id="quiz-title">Quick quiz</h1></div>
+          <div class="quiz-counter" id="quiz-counter">QUESTION 1 / 5</div>
+        </div>
+        <div class="quiz-card">
+          <div class="quiz-card__top">
+            <span id="quiz-points" class="muted">10 points</span>
+          </div>
+          <form id="quiz-form">
+            <fieldset class="quiz-fieldset">
+              <legend id="quiz-question">Loading question…</legend>
+              <div id="quiz-options" class="quiz-options"></div>
+            </fieldset>
+            <div
+              id="quiz-feedback"
+              class="quiz-feedback"
+              aria-live="polite"
+            ></div>
+            <div class="quiz-actions">
+              <button
+                class="button button--secondary"
+                id="quiz-submit"
+                type="submit"
+                disabled
+              >
+                Submit</button
+              ><button
+                class="button button--primary"
+                id="quiz-next"
+                type="button"
+                hidden
+              >
+                Next question <span aria-hidden="true">→</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+      <section
+        class="screen"
+        id="screen-results"
+        data-screen="results"
+        aria-labelledby="results-title"
+        hidden
+      >
+        <div class="results-card">
+          <div class="results-art" aria-hidden="true">
+            <img src="assets/icons/compost.svg" alt="" />
+          </div>
+          <p class="eyebrow">YOUR ECO ADVENTURE SUMMARY</p>
+          <h1 id="results-title">Well done!</h1>
+          <p id="results-message" class="lead">
+            You’re learning to make greener choices.
+          </p>
+          <div class="results-stats">
+            <div class="result-stat">
+              <span>Game score</span><strong id="result-game">0/80</strong
+              ><small>sorting points</small>
+            </div>
+            <div class="result-stat">
+              <span>Quiz score</span><strong id="result-quiz">0/50</strong
+              ><small>knowledge points</small>
+            </div>
+            <div class="result-stat result-stat--total">
+              <span>Total score</span><strong id="result-percent">0%</strong
+              ><small id="result-status">Keep practising</small>
+            </div>
+          </div>
+          <p id="results-tip" class="results-tip"></p>
+          <div class="results-actions">
+            <button
+              class="button button--secondary"
+              id="retry-quiz"
+              type="button"
+            >
+              Retry quiz</button
+            ><button
+              class="button button--primary"
+              id="restart-course"
+              type="button"
+            >
+              Restart course
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <span
+        >EcoSort
+        <img class="small-icon" src="assets/icons/recycle.svg" alt="" /></span
+      ><span>EcoSort · GET Assessment A</span>
+    </footer>
+  </body>
+</html>

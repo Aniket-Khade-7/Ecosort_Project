@@ -1,0 +1,180 @@
+{
+  "course": {
+    "title": "EcoSort: Sort It Right!",
+    "intro": "Learn which bin your waste belongs in, play a quick sorting game, then test yourself with a 5-question quiz.",
+    "passPercent": 70
+  },
+  "bins": [
+    {
+      "id": "recycle",
+      "label": "Recycle",
+      "icon": "assets/icons/recycle.svg",
+      "color": "#2165A5",
+      "description": "Clean paper, plastic bottles, glass and metal cans.",
+      "examples": [
+        "Newspaper",
+        "Soda can",
+        "Glass jar"
+      ]
+    },
+    {
+      "id": "compost",
+      "label": "Compost",
+      "icon": "assets/icons/compost.svg",
+      "color": "#9A5318",
+      "description": "Fruit scraps and garden waste that break down naturally.",
+      "examples": [
+        "Fruit and vegetable peels",
+        "Used tea leaves",
+        "Dry leaves and flowers"
+      ]
+    },
+    {
+      "id": "landfill",
+      "label": "Landfill",
+      "icon": "assets/icons/landfill.svg",
+      "color": "#3E454B",
+      "description": "Things that can\u2019t be recycled or composted, like chip packets.",
+      "examples": [
+        "Used tissues",
+        "Broken pens",
+        "Chip packets"
+      ]
+    }
+  ],
+  "items": [
+    {
+      "id": "newspaper",
+      "label": "Newspaper",
+      "icon": "assets/icons/newspaper.svg",
+      "bin": "recycle",
+      "hint": "Clean paper can be made into new things."
+    },
+    {
+      "id": "banana",
+      "label": "Banana peel",
+      "icon": "assets/icons/banana-peel.svg",
+      "bin": "compost",
+      "hint": "Food scraps break down naturally."
+    },
+    {
+      "id": "soda",
+      "label": "Soda can",
+      "icon": "assets/icons/soda-can.svg",
+      "bin": "recycle",
+      "hint": "Empty metal cans can be recycled."
+    },
+    {
+      "id": "chip",
+      "label": "Chip packet",
+      "icon": "assets/icons/chip-packet.svg",
+      "bin": "landfill",
+      "hint": "Chip packets are mixed materials that can\u2019t be recycled in most systems."
+    },
+    {
+      "id": "plastic",
+      "label": "Plastic bottle",
+      "icon": "assets/icons/plastic-bottle.svg",
+      "bin": "recycle",
+      "hint": "Empty plastic bottles are recyclable in many local programs."
+    },
+    {
+      "id": "apple",
+      "label": "Apple core",
+      "icon": "assets/icons/apple-core.svg",
+      "bin": "compost",
+      "hint": "Fruit scraps can become nutrient-rich compost."
+    },
+    {
+      "id": "pen",
+      "label": "Broken pen",
+      "icon": "assets/icons/broken-pen.svg",
+      "bin": "landfill",
+      "hint": "Broken pens are made of mixed materials."
+    },
+    {
+      "id": "tea",
+      "label": "Tea leaves",
+      "icon": "assets/icons/tea-leaves.svg",
+      "bin": "compost",
+      "hint": "Tea leaves are natural waste and can compost."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "q1",
+      "question": "Which bin should a banana peel go in?",
+      "options": [
+        "Recycle",
+        "Compost",
+        "Landfill",
+        "Any bin"
+      ],
+      "answerIndex": 1,
+      "feedback": {
+        "correct": "Well done! Fruit peels break down naturally.",
+        "incorrect": "Fruit peels break down naturally, so compost is the best choice."
+      }
+    },
+    {
+      "id": "q2",
+      "question": "Which bin should a used pizza box with grease go in?",
+      "options": [
+        "Recycle",
+        "Compost",
+        "Any bin",
+        "Landfill"
+      ],
+      "answerIndex": 1,
+      "feedback": {
+        "correct": "Correct! Food-soiled paper can be composted in many systems.",
+        "incorrect": "Not quite. Grease spoils paper recycling, so compost it instead."
+      }
+    },
+    {
+      "id": "q3",
+      "question": "What should you do before recycling a soda can?",
+      "options": [
+        "Fill it with water",
+        "Empty it",
+        "Put food inside it",
+        "Throw it into any bin"
+      ],
+      "answerIndex": 1,
+      "feedback": {
+        "correct": "Right! Empty containers are easier to process.",
+        "incorrect": "Empty the can first, and check your local recycling rules."
+      }
+    },
+    {
+      "id": "q4",
+      "question": "Which item can usually go in the recycle bin?",
+      "options": [
+        "Broken pen",
+        "Chip packet",
+        "Clean newspaper",
+        "Used tissue"
+      ],
+      "answerIndex": 2,
+      "feedback": {
+        "correct": "Correct! Clean paper can be recycled.",
+        "incorrect": "Clean newspaper is recyclable in many local programs."
+      }
+    },
+    {
+      "id": "q5",
+      "question": "Where does a chip packet belong?",
+      "options": [
+        "Compost",
+        "Recycle",
+        "Landfill",
+        "Any bin"
+      ],
+      "answerIndex": 2,
+      "feedback": {
+        "correct": "Well done. Correct! Chip packets are mixed materials that can\u2019t be recycled.",
+        "incorrect": "Chip packets are mixed materials, so they usually belong in landfill."
+      }
+    }
+  ]
+}
